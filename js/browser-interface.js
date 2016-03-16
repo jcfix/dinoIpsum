@@ -2,8 +2,10 @@
 // var apiKey = require('./../.env').apiKey;
 
 $(document).ready(function() {
+  $("button#clearResult").hide();
   $("form.generateIpsum").submit(function(event) {
 
+    $("button#clearResult").show();
     event.preventDefault();
 
     var inputtedParagraphs = $("input#numParagraphs").val();
@@ -11,8 +13,13 @@ $(document).ready(function() {
 
     $.get('http://dinoipsum.herokuapp.com/api/?format=html&paragraphs=' + inputtedParagraphs + '&words=' + inputtedNumber).then(function(response) {
       $(".result").append(response);
-
     });
+    $("form.generateIpsum")[0].reset();
+
+  });
+  $("button#clearResult").click(function() {
+    $("div.result").empty();
+    $("button#clearResult").hide();
   });
 });
 
