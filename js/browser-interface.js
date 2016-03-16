@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
   $("form.generateIpsum").submit(function(event) {
-    debugger;
+
     event.preventDefault();
 
     var inputtedParagraphs = $("input#numParagraphs").val();
